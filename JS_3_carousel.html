@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="JS_carousel_style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="carousel-conteiner">
+        <div class="mySlides fade">
+            1
+            <img src="rainbow.jpg" alt="">
+        </div>
+
+        <div class="mySlides fade">
+            2
+            <img src="rainbow2.jpg" alt="">
+        </div>
+
+        <div class="mySlides fade">
+            3
+            <img src="rainbow3.jpg" alt="">
+        </div>
+
+        <div class="mySlides fade">
+            4
+            <img src="rainbow4.jpg" alt="">
+        </div>
+        
+        <a class="prev" onclick="changeSlides(-1)">&#10094</a>
+        <a class="next" onclick="changeSlides(1)">&#10095</a>
+    </div>
+
+    <br>
+    <div class="Dots">
+        <a class="dot" onclick="currentSlide(1)"></a>
+        <a class="dot" onclick="currentSlide(2)"></a>
+        <a class="dot" onclick="currentSlide(3)"></a>
+        <a class="dot" onclick="currentSlide(4)"></a>
+    </div>
+
+<!-- SCRIPT -->
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function changeSlides(n) {
+            showSlides(slideIndex += n);
+        }
+        function currentSlide(n) {
+            showSlides(slideIndex = n)
+        }
+        function showSlides(n) {
+            let slides = document.getElementsByClassName('mySlides');
+            let dots = document.getElementsByClassName('dot');
+
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].style.background = 'rgb(25, 0, 255)';
+            }
+            slides[slideIndex-1].style.display = 'block';
+            dots[slideIndex-1].style.background = 'red';
+        }
+    </script>
+
+</body>
+</html>
